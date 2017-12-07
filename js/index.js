@@ -1,10 +1,18 @@
 var ipDiv = document.getElementById('ip');
+var endpointUrl = 'http://ip.jsontest.com';
+
+function handleResponse(response){
+    ipDiv.innerHTML = 'Your IP Address is ' + response.ip;
+}
+
 if (window.fetch) {
-    fetch("http://ip.jsontest.com").then(function (response) {return response.json();})
-        .then(function(response) {
-            ipDiv.innerHTML = 'Your IP Address is ' + response.ip;
-        });
+    fetch(endpointUrl).then(function (response) {return response.json();})
+        .then(handleResponse);
 } else {
-    var chromeURL = 'https://www.google.ca/chrome/browser/desktop/index.html?brand=CHBD&gclid=CjwKCAiA6qPRBRAkEiwAGw4Sds1pEH-l4-GW-Pjths88f_Jef172SFuen7uAdueqXD1g8E8FaNlAWhoCYzcQAvD_BwE&gclsrc=aw.ds&dclid=CMzlxpe7-NcCFRGdyAodOWcHeg';
-    ipDiv.innerHTML = 'Your browser is not supported, please <a href="'+chromeURL+'" target="_blank">download another one</a>';
+    var request;
+    legacyFetch = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+    legacyFetch.open('GET',endpointUrl, true);
+    legacyFetch.onload = function(){
+        handleResponse(JSON.parse(legacyFetch.responseText));
+    }
 }
