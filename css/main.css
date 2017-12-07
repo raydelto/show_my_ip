@@ -1,0 +1,17 @@
+.main-container{
+    display: flex;
+    background: aliceblue;
+    height: 150px;
+    border-radius: 19px;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, .5);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ip{
+    font-family: 'Nova Mono', monospace;    
+    font-size: xx-large;
+    color: rgb(224,187,57);
+    text-shadow: 2px 2px grey;
+}
