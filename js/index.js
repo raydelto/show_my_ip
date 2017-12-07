@@ -9,10 +9,11 @@ if (window.fetch) {
     fetch(endpointUrl).then(function (response) {return response.json();})
         .then(handleResponse);
 } else {
-    var request;
+    var legacyFetch;
     legacyFetch = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
     legacyFetch.open('GET',endpointUrl, true);
     legacyFetch.onload = function(){
         handleResponse(JSON.parse(legacyFetch.responseText));
     }
+    legacyFetch.send();
 }
