@@ -9,8 +9,12 @@
     justify-content: center;
 }
 
+a {
+    text-decoration: none;
+}
+
 .ip{
-    font-family: 'Nova Mono', monospace;    
+    font-family: 'Nova Mono', monospace;
     font-size: xx-large;
     color: rgb(224,187,57);
     text-shadow: 2px 2px grey;
